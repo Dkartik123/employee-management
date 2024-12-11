@@ -100,7 +100,7 @@ Docker Compose >= 2.x
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/employee-management.git
+git clone https://github.com/Dkartik123/employee-management.git
 cd employee-management
 ```
 
