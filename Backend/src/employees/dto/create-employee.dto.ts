@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsDate, IsNotEmpty, IsString, Matches } from 'class-validator';
+import { IsDate, IsEnum, IsNotEmpty, IsString, Matches } from 'class-validator';
+import { Office } from '../enums/office.enum';
 
 export class CreateEmployeeDto {
   @ApiProperty({
@@ -22,11 +23,11 @@ export class CreateEmployeeDto {
   @ApiProperty({
     description: 'Office location',
     example: 'Riga',
-    enum: ['Riga', 'Tallinn', 'Vilnius']
+    enum: Office
   })
   @IsNotEmpty()
-  @IsString()
-  office: string;
+  @IsEnum(Office)
+  office: Office;
 
   @ApiProperty({
     description: 'Phone number',

@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Office } from '../enums/office.enum';
 
 @Entity()
 export class Employee {
@@ -27,10 +28,13 @@ export class Employee {
   @ApiProperty({
     description: 'Office location',
     example: 'Riga',
-    enum: ['Riga', 'Tallinn', 'Vilnius']
+    enum: Office
   })
-  @Column()
-  office: string;
+  @Column({
+    type: 'enum',
+    enum: Office
+  })
+  office: Office;
 
   @ApiProperty({
     description: 'Phone number',

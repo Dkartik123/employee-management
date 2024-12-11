@@ -1,16 +1,48 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:13
+  api:
+    container_name: managment-api
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: employee_db
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_DATABASE=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  frontend:
+    container_name: managment-frontend
+    build:
+      context: ./employee
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+  postgres:
+    container_name: managment-postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data:delegated
     networks:
       - app-network
     healthcheck:
@@ -18,39 +50,14 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
 
-  api:
-    build: 
-      context: ./Backend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
-      DB_DATABASE: employee_db
-    networks:
-      - app-network
-
-  frontend:
-    build:
-      context: ./Employee-Management-System-Angular
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"
-    depends_on:
-      - api
-    networks:
-      - app-network
+volumes:
+  postgres_data: 
 
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  postgres_data: 

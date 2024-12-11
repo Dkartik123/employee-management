@@ -6,22 +6,13 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  app.enableCors({
-    origin: 'http://localhost:4200',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  });
-
-  app.useGlobalPipes(new ValidationPipe({
-    transform: true,
-    whitelist: true,
-    forbidNonWhitelisted: true,
-  }));
+  app.enableCors();
+  app.useGlobalPipes(new ValidationPipe());
   
   // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('Employee Management API')
-    .setDescription('API documentation for Employee Management System')
+    .setDescription('API for managing employees')
     .setVersion('1.0')
     .addTag('employees')
     .build();

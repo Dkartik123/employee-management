@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.riga {
+  background-color: #4CAF50 !important;
+  color: white !important;
+}
+
+.tallinn {
+  background-color: #2196F3 !important;
+  color: white !important;
+}
+
+.vilnius {
+  background-color: #9C27B0 !important;
+  color: white !important;
+}
+
+.mat-chip {
+  font-size: 12px !important;
+}

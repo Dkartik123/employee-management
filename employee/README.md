@@ -17,7 +17,7 @@ The backend server is deployed through [Render](https://render.com) to ensure hi
 
 To get started with the Employee Management System:
 
-1. Clone the repository: `git clone https://github.com/Pa1mekala37/Employee-Management-System-Angular.git`
+1. Clone the repository: `git clone
 2. Install the necessary dependencies: `npm install`
 3. Run the application locally: `ng serve`
 4. Access the application in your browser at `http://localhost:4200`
@@ -33,7 +33,5 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 ## Contact
 
 For any inquiries or further information, please reach out to:
-
-- [LinkedIn](www.linkedin.com/in/pavan-mekala-5233b1202)
 
 We appreciate your interest and support in the Employee Management System!

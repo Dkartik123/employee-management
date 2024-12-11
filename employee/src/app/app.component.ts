@@ -1,17 +1,17 @@
-import { Component,OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
 import { EmployeeService } from './services/employee.service';
 
 
-import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 import { CoreService } from './core/core.service';
+import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 
 
 @Component({
@@ -26,14 +26,11 @@ export class AppComponent implements OnInit{
     'id',
     'firstName',
     'lastName',
-    'email',
-    'dob',
-    'gender',
-    'education',
-    'company',
-    'experience',
-    'package',
-    'action',
+    'office',
+    'phone',
+    'tags',
+    'birthDate',
+    'action'
   ];
   dataSource!: MatTableDataSource<any>;
 

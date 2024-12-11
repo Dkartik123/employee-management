@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
-import { EmployeeService } from '../services/employee.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-emp-add-edit',
@@ -12,34 +11,23 @@ import { CoreService } from '../core/core.service';
 })
 export class EmpAddEditComponent implements OnInit {
   empForm: FormGroup;
-
-  education : string[] =[
-    'Matric',
-    'Diploma',
-    'Intermediate',
-    'Graduation',
-    'Post Graduation'
-  ]
+  offices = ['Riga', 'Tallinn', 'Vilnius'];
 
   constructor(
-      private _fb: FormBuilder,
-      private _empService: EmployeeService , 
-      private _dialogRef: MatDialogRef<EmpAddEditComponent>,
-      private _coreService: CoreService,
-      @Inject(MAT_DIALOG_DATA) public data:any
-    ) 
-    {
+    private _fb: FormBuilder,
+    private _empService: EmployeeService,
+    private _dialogRef: MatDialogRef<EmpAddEditComponent>,
+    private _coreService: CoreService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.empForm = this._fb.group({
-      firstName: '',
-      lastName: '',
-      email: '',
-      dob : '',
-      gender: '',
-      education: '',
-      company:'',
-      experience:'',
-      package: ''
-    })
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      office: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9\s-]{8,}$/)]],
+      tags: [''],
+      birthDate: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
