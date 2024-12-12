@@ -1,60 +1,30 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Office } from '../enums/office.enum';
+import { IEmployee } from '../interfaces/employee.interface';
 
 @Entity()
-export class Employee {
-  @ApiProperty({
-    description: 'Unique identifier',
-    example: 1
-  })
+export class Employee implements IEmployee {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiProperty({
-    description: 'Employee first name',
-    example: 'John'
-  })
   @Column()
   firstName: string;
 
-  @ApiProperty({
-    description: 'Employee last name',
-    example: 'Doe'
-  })
   @Column()
   lastName: string;
 
-  @ApiProperty({
-    description: 'Office location',
-    example: 'Riga',
-    enum: Office
-  })
   @Column({
     type: 'enum',
     enum: Office
   })
   office: Office;
 
-  @ApiProperty({
-    description: 'Phone number',
-    example: '+37120000000'
-  })
   @Column()
   phone: string;
 
-  @ApiProperty({
-    description: 'Employee tags/role',
-    example: 'Developer'
-  })
   @Column()
   tags: string;
 
-  @ApiProperty({
-    description: 'Employee birth date',
-    example: '1990-01-01',
-    type: Date
-  })
   @Column('date')
   birthDate: Date;
 } 

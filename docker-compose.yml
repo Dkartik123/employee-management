@@ -56,7 +56,7 @@ services:
       - "wal_level=logical"
 
 volumes:
-  postgres_data: 
+  postgres_data:
 
 networks:
   app-network:

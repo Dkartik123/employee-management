@@ -13,20 +13,12 @@ export class EmployeesService {
 
   async create(createEmployeeDto: CreateEmployeeDto): Promise<Employee> {
     try {
-      console.log('Service: Creating employee');
-      console.log('Service: Data:', createEmployeeDto);
-      
-      // Преобразуем дату в правильный формат
       const employee = this.employeeRepository.create({
         ...createEmployeeDto,
         birthDate: new Date(createEmployeeDto.birthDate)
       });
-      
-      const result = await this.employeeRepository.save(employee);
-      console.log('Service: Created employee:', result);
-      return result;
+      return await this.employeeRepository.save(employee);
     } catch (error) {
-      console.error('Service: Error creating employee:', error);
       throw error;
     }
   }

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { EmployeesService } from './employees.service';
@@ -11,10 +11,10 @@ export class EmployeesController {
 
   @Post()
   @ApiOperation({ summary: 'Create new employee' })
-  @ApiResponse({ 
-    status: 201, 
+  @ApiResponse({
+    status: 201,
     description: 'Employee has been successfully created.',
-    type: Employee 
+    type: Employee
   })
   @ApiResponse({ status: 400, description: 'Bad request.' })
   async create(@Body() createEmployeeDto: CreateEmployeeDto): Promise<Employee> {
@@ -40,8 +40,17 @@ export class EmployeesController {
     type: Employee
   })
   @ApiResponse({ status: 404, description: 'Employee not found.' })
-  findOne(@Param('id') id: string): Promise<Employee> {
-    return this.employeesService.findOne(+id);
+  async findOne(@Param('id') id: string): Promise<Employee> {
+    const numberId = parseInt(id, 10);
+    if (isNaN(numberId)) {
+      throw new NotFoundException(`Invalid ID format: ${id}`);
+    }
+    
+    const employee = await this.employeesService.findOne(numberId);
+    if (!employee) {
+      throw new NotFoundException(`Employee with ID ${id} not found`);
+    }
+    return employee;
   }
 
   @Put(':id')
@@ -52,11 +61,20 @@ export class EmployeesController {
     type: Employee
   })
   @ApiResponse({ status: 404, description: 'Employee not found.' })
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateEmployeeDto: CreateEmployeeDto,
   ): Promise<Employee> {
-    return this.employeesService.update(+id, updateEmployeeDto);
+    const numberId = parseInt(id, 10);
+    if (isNaN(numberId)) {
+      throw new NotFoundException(`Invalid ID format: ${id}`);
+    }
+    
+    const employee = await this.employeesService.update(numberId, updateEmployeeDto);
+    if (!employee) {
+      throw new NotFoundException(`Employee with ID ${id} not found`);
+    }
+    return employee;
   }
 
   @Delete(':id')
@@ -66,7 +84,17 @@ export class EmployeesController {
     description: 'Employee has been successfully deleted.'
   })
   @ApiResponse({ status: 404, description: 'Employee not found.' })
-  remove(@Param('id') id: string): Promise<void> {
-    return this.employeesService.remove(+id);
+  async remove(@Param('id') id: string): Promise<void> {
+    const numberId = parseInt(id, 10);
+    if (isNaN(numberId)) {
+      throw new NotFoundException(`Invalid ID format: ${id}`);
+    }
+    
+    const employee = await this.employeesService.findOne(numberId);
+    if (!employee) {
+      throw new NotFoundException(`Employee with ID ${id} not found`);
+    }
+    
+    await this.employeesService.remove(numberId);
   }
 } 
