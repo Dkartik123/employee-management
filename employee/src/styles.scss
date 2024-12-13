@@ -56,6 +56,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
-.mdc-button.mdc-button--raised.mat-mdc-raised-button.add-employee-btn {
-  // те же стили что и выше
+.logo-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #0A84FF;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: #007AFF;
+    transform: scale(1.05);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  span {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.2px;
+  }
 }
