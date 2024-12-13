@@ -21,3 +21,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-chip {
   font-size: 12px !important;
 }
+
+.mdc-button.mdc-button--raised.mat-mdc-raised-button {
+  background-color: #0A84FF;
+  color: white;
+  border-radius: 8px;
+  padding: 0 20px;
+  height: 44px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(10, 132, 255, 0.15);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: #007AFF;
+    box-shadow: 0 4px 8px rgba(10, 132, 255, 0.25);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+    color: rgba(0, 0, 0, 0.38);
+    cursor: not-allowed;
+  }
+
+  .mat-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+
+  .mdc-button__label {
+    font-size: 14px;
+  }
+}
+
+.mdc-button.mdc-button--raised.mat-mdc-raised-button.add-employee-btn {
+  // те же стили что и выше
+}
