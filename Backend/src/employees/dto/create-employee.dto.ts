@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 import { IsDate, IsEnum, IsNotEmpty, IsString, Matches, MinLength } from 'class-validator';
 import { EMPLOYEE_CONSTANTS } from '../constants/employee.constants';
 import { Office } from '../enums/office.enum';
@@ -54,6 +55,7 @@ export class CreateEmployeeDto implements EmployeeCreateData {
     example: '1990-01-01'
   })
   @IsNotEmpty()
+  @Transform(({ value }) => new Date(value))
   @IsDate()
   birthDate: Date;
 } 
