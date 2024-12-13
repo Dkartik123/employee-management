@@ -75,7 +75,7 @@ Employee Management System is a comprehensive solution for managing employee dat
 ## 🛠 Tech Stack
 
 ### Frontend
-- **Framework**: Angular 15
+- **Framework**: Angular 17
 - **UI Library**: Angular Material
 - **State Management**: RxJS
 - **Styling**: SCSS
