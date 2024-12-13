@@ -64,6 +64,14 @@ Employee Management System is a comprehensive solution for managing employee dat
 - Rate limiting
 - Environment-based configuration
 
+### Testing Features
+- **Comprehensive Testing Suite**
+  - Unit tests with Jasmine/Karma
+  - E2E tests with Cypress
+  - Integration tests
+  - Test coverage reports
+  - Automated CI/CD testing pipeline
+
 ## 🛠 Tech Stack
 
 ### Frontend
@@ -84,6 +92,15 @@ Employee Management System is a comprehensive solution for managing employee dat
 - **Orchestration**: Docker Compose
 - **Web Server**: Nginx
 - **Version Control**: Git
+
+### Testing Tools
+- **Frontend Testing**: 
+  - Jasmine
+  - Karma
+  - Cypress
+- **Backend Testing**:
+  - Jest
+  - Supertest
 
 ## 🚀 Getting Started
 
@@ -184,6 +201,47 @@ npm install
 npm run start:dev
 ```
 
+### Running Tests
+
+#### Frontend Tests
+```bash
+# Unit Tests
+cd Employee-Management-System-Angular
+npm run test
+
+# E2E Tests
+npm run e2e
+
+# Generate Coverage Report
+npm run test:coverage
+```
+
+#### Backend Tests
+```bash
+cd Backend
+# Unit Tests
+npm run test
+
+# E2E Tests
+npm run test:e2e
+
+# Test Coverage
+npm run test:cov
+```
+
+### Test Structure
+
+```
+Frontend/
+├── src/
+│   └── app/
+│       ├── __tests__/        # Unit tests
+│       └── e2e/             # E2E tests
+Backend/
+├── src/
+│   └── __tests__/          # Backend tests
+```
+
 ## 🔧 Environment Variables
 
 ### Backend Configuration
@@ -199,6 +257,18 @@ DB_DATABASE=employee_db
 ```env
 API_URL=/api
 ```
+
+## 🤝 Deployment
+
+### Live Demo
+- Frontend Application: [https://employee-management.denislomakin.com](https://employee-management.denislomakin.com)
+- Backend API: [https://api.employee-management.denislomakin.com](https://api.employee-management.denislomakin.com)
+- API Documentation: [https://api.employee-management.denislomakin.com/docs](https://api.employee-management.denislomakin.com/docs)
+
+### Deployment Environments
+- Development: [dev.employee-management.denislomakin.com](https://dev.employee-management.denislomakin.com)
+- Staging: [staging.employee-management.denislomakin.com](https://staging.employee-management.denislomakin.com)
+- Production: [employee-management.denislomakin.com](https://employee-management.denislomakin.com)
 
 ## 🤝 Contributing
 
