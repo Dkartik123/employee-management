@@ -1,6 +1,6 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { SwaggerModule } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { CustomLogger } from './common/services/logger.service';
 
@@ -8,12 +8,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: new CustomLogger(),
   });
-
+//CORS configuration
   app.enableCors({
     origin: [
       'http://localhost:4200',
-      'https://employee-management-flax-pi.vercel.app',
       'https://dkartik123.github.io'
+
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
