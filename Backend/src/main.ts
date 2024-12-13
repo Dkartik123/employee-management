@@ -1,26 +1,30 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import 'reflect-metadata';
 import { AppModule } from './app.module';
+import { CustomLogger } from './common/services/logger.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  
-  app.enableCors();
-  app.useGlobalPipes(new ValidationPipe());
-  
-  // Swagger configuration
-  const config = new DocumentBuilder()
-    .setTitle('Employee Management API')
-    .setDescription('API for managing employees')
-    .setVersion('1.0')
-    .addTag('employees')
-    .build();
+  const app = await NestFactory.create(AppModule, {
+    logger: new CustomLogger(),
+  });
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  app.enableCors({
+    origin: [
+      'http://localhost:4200',
+      'https://employee-management-flax-pi.vercel.app'
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
 
-  await app.listen(3000);
+  app.useGlobalPipes(new ValidationPipe({
+    transform: true,
+    whitelist: true,
+    forbidNonWhitelisted: true,
+  }));
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap(); 
