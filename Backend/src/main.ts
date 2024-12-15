@@ -12,6 +12,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:4200',
+      'http://localhost:8000',
       'https://dkartik123.github.io'
 
     ],

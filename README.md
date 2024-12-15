@@ -128,7 +128,7 @@ docker-compose up --build
 
 3. Access the application:
 ```bash
-Frontend: http://localhost
+Frontend: http://localhost:8000
 Backend API: http://localhost:3000
 Swagger UI: http://localhost:3000/api
 ```
