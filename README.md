@@ -75,7 +75,6 @@ npm run test:coverage    # Coverage report
 # Backend
 cd Backend
 npm test                 # Unit tests
-npm run test:e2e        # E2E tests
 ```
 
 ## 🔧 Environment
@@ -98,6 +97,26 @@ DB_DATABASE=employee_db
 | POST | `/employees` | Create employee |
 | PUT | `/employees/:id` | Update employee |
 | DELETE | `/employees/:id` | Delete employee |
+
+## 🤝 Deployment
+
+### Frontend
+- **Platform**: GitHub Pages
+- **URL**: [https://dkartik123.github.io/employee-management/](https://dkartik123.github.io/employee-management/)
+- **Features**:
+  - Static site hosting
+  - Automated deployment via GitHub Actions
+  - Custom domain support
+
+### Backend
+- **Platform**: Render
+- **API**: [https://employee-management-87s0.onrender.com](https://employee-management-87s0.onrender.com)
+- **Swagger**: [https://employee-management-87s0.onrender.com/api](https://employee-management-87s0.onrender.com/api)
+- **Features**:
+  - Automatic deployments from GitHub
+  - PostgreSQL database hosting
+  - HTTPS encryption
+  - API documentation with Swagger UI
 
 ## 🤝 Contributing
 
