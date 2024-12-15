@@ -4,8 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:docker": "cross-env DB_HOST=postgres nest start",
     "deploy": "ng deploy --base-href=/employee-management/",
     "build": "ng build",
+    "build-dev": "ng build --configuration development",
+    "build-staging": "ng build --configuration staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
