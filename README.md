@@ -8,7 +8,7 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 [Demo](https://dkartik123.github.io/employee-management/) •
-[API](https://employee-management-87s0.onrender.com) •
+[API](https://employee-management-87s0.onrender.com/employees) •
 [Docs](https://employee-management-87s0.onrender.com/api)
 
 </div>
