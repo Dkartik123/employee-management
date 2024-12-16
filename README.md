@@ -70,7 +70,6 @@ Frontend (Jasmine + Karma)           Backend (Jest)
 # Frontend
 cd employee
 npm test                  # Unit tests
-npm run test:coverage    # Coverage report
 
 # Backend
 cd Backend
